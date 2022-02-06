@@ -24,5 +24,11 @@ jobs:
           pipenv run flake8 .
       - name: Test with pytest
         run: |
-          pipenv run pytest
+          pipenv run pytest --cov=pypro
+      - name: Report with codecov
+        env:
+          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+        run: |
+          pipenv run codecov
+
 
