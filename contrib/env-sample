@@ -1,7 +1,11 @@
 DEBUG=False
 SECRET_KEY=definasuachaveaqui
 ALLOWED_HOSTS=localhost, 127.0.0.1
+
 DATABASE_URL=postgres://postgres:postgres@localhost/testdb
+
+INTERNAL_IPS= 127.0.0.1
+
 #Configurações do AWS
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
