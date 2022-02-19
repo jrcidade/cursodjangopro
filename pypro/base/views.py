@@ -2,4 +2,5 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse('<html><body>Ola Django</body></html>')
+    raise ValueError()
+    return HttpResponse('<html><body>Olá Django</body></html>')
