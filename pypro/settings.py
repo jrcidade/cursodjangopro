@@ -135,29 +135,28 @@ USE_TZ = True
 
 # Configuração de ambiente de desenvolvimento
 MEDIA_URL = '/media/'
-MEDIA_ROOT = str(BASE_DIR / 'mediafiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
 STATIC_URL = '/static/'
-STATIC_ROOT = str(BASE_DIR / 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 COLLECTFAST_ENABLED = False
 
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+
 # STORAGE CONFIGURATION IN S3 AWS
-# ------------------------------------------------------------------------------
-# Uploaded Media Files
-# ------------------------------------------------------------------------------
-AWS_ACCESS_KEY_ID = config('DJANGO_AWS_ACCESS_KEY_ID', default=False)
 if AWS_ACCESS_KEY_ID:
-    AWS_SECRET_ACCESS_KEY = config('DJANGO_AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = config('DJANGO_AWS_SECRET_ACCESS_KEY')
+    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400', }
     AWS_PRELOAD_METADATA = True
     AWS_AUTO_CREATE_BUCKET = False
     AWS_QUERYSTRING_AUTH = True
     AWS_S3_CUSTOM_DOMAIN = None
+    AWS_DEFAULT_ACL = 'private'
 
     COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
     COLLECTFAST_ENABLED = True
-
-    AWS_DEFAULT_ACL = 'private'
 
     # STATIC ASSETS
     STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
