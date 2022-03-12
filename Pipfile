@@ -12,6 +12,7 @@ psycopg2-binary = "*"
 django-s3-folder-storage = "*"
 collectfast = "*"
 django-debug-toolbar = "*"
+django-ordered-model = "*"
 
 [dev-packages]
 flake8 = "*"
