@@ -9,6 +9,8 @@ AWS_SECRET_ACCESS_KEY=
 AWS_STORAGE_BUCKET_NAME=
 INTERNAL_IPS=127.0.0.1
 
+SENTRY_DSN=''
+
 #Configuração de Email
 EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 EMAIL_HOST=localhost
